@@ -1,0 +1,10 @@
+Dear customer,
+
+A new {{type}} has been posted on your account {{accountId}}.
+
+Transaction ID: {{transactionId}}
+Amount:         {{amount}}
+Date/Time:      {{timestamp}}
+
+Thank you,
+Digital Bank
