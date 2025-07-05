@@ -1,0 +1,20 @@
+syntax = "proto3";
+package com.bank.account.grpc;
+
+option java_package = "com.bank.account.grpc";
+option java_outer_classname = "AccountProto";
+
+service AccountService {
+  rpc UpdateBalance(UpdateBalanceRequest) returns (UpdateBalanceResponse);
+}
+
+message UpdateBalanceRequest {
+  string accountId = 1;
+  double amount    = 2;
+  string type      = 3; // "DEBIT" or "CREDIT"
+}
+
+message UpdateBalanceResponse {
+  string accountId = 1;
+  double newBalance = 2;
+}

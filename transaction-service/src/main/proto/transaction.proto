@@ -1,0 +1,20 @@
+syntax = "proto3";
+package com.bank.transaction.grpc;
+
+option java_package = "com.bank.transaction.grpc";
+option java_outer_classname = "TransactionProto";
+
+service TransactionService {
+  rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse);
+}
+
+message CreateTransactionRequest {
+  string accountId = 1;
+  double amount    = 2;
+  string type      = 3; // "DEBIT" or "CREDIT"
+}
+
+message CreateTransactionResponse {
+  string transactionId = 1;
+  double newBalance    = 2;
+}
