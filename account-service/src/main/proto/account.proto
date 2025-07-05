@@ -1,0 +1,42 @@
+syntax = "proto3";
+package com.bank.account.grpc;
+
+option java_package = "com.bank.account.grpc";
+option java_outer_classname = "AccountProto";
+
+service AccountService {
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+  rpc UpdateBalance(UpdateBalanceRequest) returns (UpdateBalanceResponse);
+  rpc ListStatements(ListStatementsRequest) returns (ListStatementsResponse);
+}
+
+message GetBalanceRequest {
+  string accountId = 1;
+}
+message GetBalanceResponse {
+  string accountId = 1;
+  double balance = 2;
+}
+
+message UpdateBalanceRequest {
+  string accountId = 1;
+  double amount = 2;
+  string type = 3; // "DEBIT" or "CREDIT"
+}
+message UpdateBalanceResponse {
+  string accountId = 1;
+  double newBalance = 2;
+}
+
+message ListStatementsRequest {
+  string accountId = 1;
+}
+message Statement {
+  string id = 1;
+  string type = 2;
+  double amount = 3;
+  int64 timestamp = 4;
+}
+message ListStatementsResponse {
+  repeated Statement statements = 1;
+}
